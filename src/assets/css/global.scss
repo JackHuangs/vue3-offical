@@ -1,0 +1,197 @@
+h1, h2, h3, h4, p {
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+.g-relative,
+.g-rela {
+  position: relative;
+}
+
+.g-absolute,
+.g-abso {
+  position: absolute;
+}
+
+.g-img {
+  display: flex;
+}
+
+.g-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.g-flex-direction {
+  flex-direction: column;
+}
+
+.g-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.g-flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.g-col-center {
+  align-items: center;
+}
+
+.g-col-top {
+  align-items: flex-start;
+}
+
+.g-col-bottom {
+  align-items: flex-end;
+}
+
+.g-row-center {
+  justify-content: center;
+}
+
+.g-row-left {
+  justify-content: flex-start;
+}
+
+.g-row-right {
+  justify-content: flex-end;
+}
+
+.g-row-between {
+  justify-content: space-between;
+}
+
+.g-row-around {
+  justify-content: space-around;
+}
+
+.g-text-left {
+  text-align: left;
+}
+
+.g-text-center {
+  text-align: center;
+}
+
+.g-text-right {
+  text-align: right;
+}
+
+.g-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// 定义flex等分
+@for $i from 0 through 12 {
+  .g-flex-#{$i} {
+    flex: $i;
+  }
+}
+
+// 定义内外边距，历遍1-80
+@for $i from 0 through 150 {
+  // 只要双数和能被5除尽的数
+  @if $i % 2 == 0 or $i % 5 == 0 {
+    // 得出：u-margin-30或者u-m-30
+    .g-margin-#{$i},
+    .g-m-#{$i} {
+      margin: $i + px !important;
+    }
+
+    // 得出：u-padding-30或者u-p-30
+    .g-padding-#{$i},
+    .g-p-#{$i} {
+      padding: $i + px !important;
+    }
+
+    @each $short, $long in l left, t top, r right, b bottom {
+      // 缩写版，结果如： u-m-l-30
+      // 定义外边距
+      .g-m-#{$short}-#{$i} {
+        margin-#{$long}: $i + px !important;
+      }
+
+      // 定义内边距
+      .g-p-#{$short}-#{$i} {
+        padding-#{$long}: $i + px !important;
+      }
+
+      // 完整版，结果如：u-margin-left-30
+      // 定义外边距
+      .g-margin-#{$long}-#{$i} {
+        margin-#{$long}: $i + px !important;
+      }
+
+      // 定义内边距
+      .g-padding-#{$long}-#{$i} {
+        padding-#{$long}: $i + px !important;
+      }
+    }
+  }
+}
+
+// 定义字体(rpx)单位，大于或等于20的都为rpx单位字体
+@for $i from 12 through 40 {
+	.g-font-#{$i} {
+		font-size: $i + px;
+	}
+}
+
+.g-line-height {
+  line-height: 23px;
+}
+
+/* start--文本行数限制--start */
+.g-line-1 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.g-line-2 {
+  -webkit-line-clamp: 2;
+}
+
+.g-line-3 {
+  -webkit-line-clamp: 3;
+}
+
+.g-line-4 {
+  -webkit-line-clamp: 4;
+}
+
+.g-line-5 {
+  -webkit-line-clamp: 5;
+}
+
+.g-line-2, .g-line-3, .g-line-4, .g-line-5 {
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis; 
+  display: -webkit-box; // 弹性伸缩盒
+  -webkit-box-orient: vertical; // 设置伸缩盒子元素排列方式
+}
+
+.g-border {
+  border: 1px solid #e8e8e8;
+}
+
+.g-border-top {
+  border-top: 1px solid #e8e8e8;
+}
+
+.g-border-right {
+  border-right: 1px solid #e8e8e8;
+}
+
+.g-border-bottom {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.g-border-left {
+  border-left: 1px solid #e8e8e8;
+}
